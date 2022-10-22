@@ -33,6 +33,7 @@ class GetStartedScreen extends StatelessWidget {
           svgSection,
           const SizedBox(height: 20),
           welcomeSection,
+          const SizedBox(height: 20),
           descSection,
           const SizedBox(height: 40),
           buttonSection
@@ -49,65 +50,31 @@ Widget svgSection = Container(
   child: const Image(image: AssetImage('images/wallet.png')),
 );
 
-Widget welcomeSection = SizedBox(
-  width: 250,
-  child: Row(
-    children: [
-      Container(
-          padding: const EdgeInsets.only(top: 0),
-          margin: const EdgeInsets.only(right: 20, left: 20),
-          child: Center(
-            child: Column(
-              children: const [
-                Text("WELCOME",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 30,
-                        color: Color(0xFFD60101))),
-                Text("TO MONCASH",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 30,
-                        color: Color(0xFFD60101)))
-              ],
-            ),
-          ))
-    ],
-  ),
+Widget welcomeSection = const SizedBox(
+  child: Center(
+   child: SizedBox(
+     width: 250,
+     child: Text("WELCOME\nTO MONCASH",
+     textAlign: TextAlign.center,
+     style: TextStyle(
+                 fontFamily: 'Poppins',
+                 fontSize: 30,
+                 color: Color(0xFFD60101))),
+   ),
+      ),
 );
 
-Widget descSection = SizedBox(
-  width: 350,
-  child: Row(
-    children: [
-      Container(
-          padding: const EdgeInsets.only(right: 12, left: 12),
-          margin: const EdgeInsets.all(20),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text("Pay with your e-wallet and",
-                  style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: 'PoMedium',
-                      color: Color(0xFFD60101)),
-                ),
-                Text("make your withdrawals and deposits",
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'PoMedium',
-                        color: Color(0xFFD60101))),
-                Text("anywhere in Haiti with an authorized agent",
-                    style: TextStyle(
-                        fontSize: 13,
-                        fontFamily: 'PoMedium',
-                        color: Color(0xFFD60101)))
-              ],
-            ),
-          ))
-    ],
-  ),
+Widget descSection = const SizedBox(
+  width: 250,
+  child: Center(
+        child: Text("Pay with your e-wallet and make your withdrawals and deposits anywhere in Haiti with an authorized agent",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 13,
+              fontFamily: 'PoMedium',
+              color: Color(0xFFD60101)),
+        ),
+      )
 );
 
 Widget buttonSection = Container(
