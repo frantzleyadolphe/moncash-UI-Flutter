@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:moncash/screens/GetstartedScreen.dart';
+//import 'package:moncash/screens/HomeScreen.dart';
 import 'package:moncash/styles/colors.dart';
 import 'package:moncash/styles/fontStyles.dart';
 
@@ -100,7 +101,6 @@ Widget formSection = Container(
       Container(
         alignment: Alignment.centerRight,
         height: 20,
-        //color: Colors.blue,
         child: Text("Forgot your pin ?", style: sousTitre2),
       ),
       const SizedBox(
@@ -116,7 +116,10 @@ Widget formSection = Container(
               horizontal: 105,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            //Navigator.push(context,
+               // MaterialPageRoute(builder: (context) => const HomeScreen()));
+          },
           child: Text("Login", style: buttonText)),
       const SizedBox(height: 15),
       Container(
@@ -149,12 +152,15 @@ Widget formSection = Container(
       const SizedBox(height: 10),
       TextButton(
           onPressed: () {
-            //kod ki ap banm prob lan 
-            
-           //Navigator.push(context,
-            //MaterialPageRoute(builder: (context) => const GetStartedScreen()));
+            //kod ki ap banm prob lan
+
+            //Navigator.push(context,
+            //MaterialPageRoute(builder: (ctx) => const GetStartedScreen()));
           },
-          child: Text("Haven’t account ? Sign Up Here", style: sousTitre4,))
+          child: Text(
+            "Haven’t account ? Sign Up Here",
+            style: sousTitre4,
+          ))
     ],
   ),
 );
