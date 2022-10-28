@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:moncash/screens/transfertScreen.dart';
 import 'package:moncash/styles/colors.dart';
 import 'package:moncash/styles/fontStyles.dart';
 
@@ -11,16 +13,36 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List transactionRecent = [
+    {
+      'senderProfil': 'images/my-profil.png',
+      'name': 'Adolphe Frantzley',
+      'date': '30/08/2022, 08:31 AM',
+      'montant': '-500 HTG'
+    },
+    {
+      'senderProfil': 'images/my-profil.png',
+      'name': 'Adolphe Frantzley',
+      'date': '30/08/2022, 08:31 AM',
+      'montant': '+ 1500 HTG'
+    },
+    {
+      'senderProfil': 'images/my-profil.png',
+      'name': 'Adolphe Frantzley',
+      'date': '15/07/2022, 08:31 AM',
+      'montant': '-800 HTG'
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Column(
+      resizeToAvoidBottomInset: false,
+      body: Column(
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 16),
           //header app
           Container(
-            height: 60,
             margin: const EdgeInsets.only(right: 16, left: 16),
             child: Row(
               //sa se pou res enfant yo prna tout res espas ki rete an
@@ -55,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
           //card moncash with information
           Container(
             height: 233,
@@ -66,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fit: BoxFit.cover,
                   alignment: Alignment.centerLeft),
               color: primaryColor,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(30),
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -122,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.bottomLeft,
                   margin: const EdgeInsets.only(left: 16),
                   child: const Text(
-                    "EXPANDED ACCOUNT",
+                    "Expanded account",
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'PoMedium',
@@ -134,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           //services
           Container(
-            padding: const EdgeInsets.only(right: 16, left: 16, top: 14),
+            padding: const EdgeInsets.only(right: 16, left: 16, top: 5),
             child: Column(
               children: [
                 Container(
@@ -148,115 +169,119 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 //icon
                 Container(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  padding: const EdgeInsets.only(top: 5, bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        decoration: BoxDecoration(
-                            color: whiteColor,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: textfield2,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 5)
-                                  )
-                            ]),
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                          onPressed: null,
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder()),
-                          child: Icon(Icons.transfer_within_a_station,color: primaryColor),
-                        ),
-                         Text("Transfert",style: TextStyle(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold
-                          ))
-                          ],
-                        )
-                      ),
+                          decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: textfield2,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 5))
+                              ]),
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              const transfertScreen()));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const CircleBorder()),
+                                child: Icon(Icons.transfer_within_a_station,
+                                    color: primaryColor),
+                              ),
+                              Text("Transfert",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          )),
                       Container(
-                        decoration: BoxDecoration(
-                            color: whiteColor,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: textfield2,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 5))
-                            ]),
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                          onPressed: null,
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder()),
-                          child: Icon(Icons.receipt_outlined, color: primaryColor),
-                        ),
-                           Text("Receive", style: TextStyle(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold
-                          ))
-                          ],
-                        )
-                      ),
+                          decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: textfield2,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 5))
+                              ]),
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: null,
+                                style: ElevatedButton.styleFrom(
+                                    shape: const CircleBorder()),
+                                child: Icon(Icons.receipt_outlined,
+                                    color: primaryColor),
+                              ),
+                              Text("Receive",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          )),
                       Container(
-                        decoration: BoxDecoration(
-                            color: whiteColor,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: textfield2,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 5))
-                            ]),
-                        padding: const EdgeInsets.all(10),
-                        child:Column(
-                          children: [
-                            ElevatedButton(
-                          onPressed: null,
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder()),
-                          child: Icon(Icons.qr_code, color: primaryColor),
-                        ),
-                         Text("QR", style: TextStyle(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold
-                          ))
-                          ],
-                        )
-                      ),
+                          decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: textfield2,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 5))
+                              ]),
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: null,
+                                style: ElevatedButton.styleFrom(
+                                    shape: const CircleBorder()),
+                                child: Icon(Icons.qr_code, color: primaryColor),
+                              ),
+                              Text("QR",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          )),
                       Container(
-                        decoration: BoxDecoration(
-                            color: whiteColor,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: textfield2,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 5))
-                            ]),
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                          onPressed: null,
-                          style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder()),
-                          child: Icon(Icons.wallet_giftcard,color: primaryColor),
-                        ),
-                           Text("Top Up", style: TextStyle(
-                            color: blackColor,
-                            fontWeight: FontWeight.bold
+                          decoration: BoxDecoration(
+                              color: whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: textfield2,
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 5))
+                              ]),
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: null,
+                                style: ElevatedButton.styleFrom(
+                                    shape: const CircleBorder()),
+                                child: Icon(Icons.wallet_giftcard,
+                                    color: primaryColor),
+                              ),
+                              Text("Top Up",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontWeight: FontWeight.bold))
+                            ],
                           ))
-                          ],
-                        )
-                      )
                     ],
                   ),
                 )
@@ -264,25 +289,170 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           //history and statut
-          const SizedBox(height: 15),
+          const SizedBox(height: 5),
           Expanded(
             child: Container(
-              decoration:  BoxDecoration(
-                color: whiteColor,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30)
-              ),
-              boxShadow: [
-                  BoxShadow(
+              decoration: BoxDecoration(
+                  color: whiteColor,
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)),
+                  boxShadow: [
+                    BoxShadow(
                       color: textfield2,
                       blurRadius: 4.5,
-                      )
-        ]),
+                    )
+                  ]),
+              child: Column(
+                children: [
+                  //first line
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(
+                              right: 16, left: 16, top: 16),
+                          alignment: Alignment.topLeft,
+                          child: const Text("Account statut",
+                              style: TextStyle(
+                                  fontFamily: 'PoBold', fontSize: 15)),
+                        ),
+                        Container(
+                            padding: const EdgeInsets.only(
+                                right: 16, left: 16, top: 16),
+                            child: Center(
+                                child: Container(
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Text(
+                                "active",
+                                style: TextStyle(
+                                    fontFamily: 'PoMedium',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: whiteColor),
+                              ),
+                            )))
+                      ],
+                    ),
+                  ),
+                  //second line
+                  Container(
+                    padding: const EdgeInsets.only(right: 16, left: 16),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "History",
+                            style:
+                                TextStyle(fontFamily: 'PoBold', fontSize: 15),
+                          ),
+                          TextButton(
+                            onPressed: null,
+                            child: Text(
+                              "See all",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 197, 85, 77),
+                                  fontFamily: 'PoRegular',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: transactionRecent.map((tRecent) {
+                      return InkWell(
+                        onTap: () {},
+                        child: Container(
+                          padding: const EdgeInsets.only(right: 16, left: 16),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 16),
+                                height: 70,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                  color: whiteColor,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: CircleAvatar(
+                                  radius: 10,
+                                  backgroundImage:
+                                      AssetImage(tRecent['senderProfil']),
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              tRecent['name'],
+                                              style: const TextStyle(
+                                                  fontFamily: 'PoBold',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              tRecent['date'],
+                                              style: TextStyle(
+                                                  color: textfield,
+                                                  fontFamily: 'PoMedium',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12),
+                                            )
+                                          ],
+                                        ),
+                                        Column(children: [
+                                          Text(
+                                            tRecent['montant'],
+                                            style: const TextStyle(
+                                              fontFamily: 'PoBold',
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ])
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  )
+                ],
+              ),
             ),
-            )
+          )
         ],
-      )),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: whiteColor,
+        color: primaryColor,
+        animationDuration: const Duration(milliseconds: 300),
+        items: [
+          Icon(Icons.home, size: 30, color: whiteColor),
+          Icon(Icons.qr_code, size: 30, color: whiteColor),
+          Icon(Icons.settings, size: 30, color: whiteColor),
+        ],
+        onTap: (index) {},
+      ),
     );
   }
 }

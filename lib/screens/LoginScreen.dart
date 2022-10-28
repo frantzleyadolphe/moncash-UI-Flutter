@@ -14,18 +14,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             children: [
               const SizedBox(height: 30),
-              imageSection,
+              if(!isKeyboard)imageSection,
               textSection,
               const SizedBox(height: 10),
               //widget pou pati formulaire lan
               Container(
-                height: 400,
+                //height: 400,
                 //color: Colors.black,
                 margin: const EdgeInsets.only(right: 20, left: 20),
                 //color: Color(0xFFD60101),
@@ -83,14 +84,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: Text("Login", style: buttonText)),
                     const SizedBox(height: 15),
-                    Container(
+                    if(!isKeyboard)Container(
                       alignment: Alignment.center,
                       height: 20,
                       //color: Colors.blue,
                       child: Text("Or", style: sousTitre3),
                     ),
                     const SizedBox(height: 20),
-                    SizedBox.fromSize(
+                    if(!isKeyboard)SizedBox.fromSize(
                       size: const Size(56, 56),
                       child: ClipOval(
                         child: Material(

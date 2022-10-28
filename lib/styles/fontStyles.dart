@@ -20,8 +20,12 @@ TextStyle sousTitre3 =
 TextStyle sousTitre4 =
     TextStyle(color: primaryColor, fontSize: 15, fontFamily: 'PoMedium');
 
-TextStyle buttonText = TextStyle(
-  color: whiteColor,
-  fontFamily: 'PoMedium',
-  fontSize: 24
-);
+TextStyle username =
+    TextStyle(color: blackColor, fontSize: 16, fontFamily: 'PoBold');
+
+TextStyle balance =
+    const TextStyle(color: Colors.white, fontFamily: 'PoBold', fontSize: 16,
+    fontWeight: FontWeight.bold);
+
+TextStyle buttonText =
+    TextStyle(color: whiteColor, fontFamily: 'PoMedium', fontSize: 24);
