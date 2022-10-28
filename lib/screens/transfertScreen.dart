@@ -3,6 +3,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moncash/screens/OtpScreen.dart';
 import 'package:moncash/styles/colors.dart';
 import 'package:moncash/styles/fontStyles.dart';
 
@@ -229,7 +230,7 @@ class _transfertScreenState extends State<transfertScreen> {
                           ),
                         ),
                         onPressed: () {
-                          //Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const OtpScreen()));
                         },
                         child: Text("Sent", style: buttonText)),
               ],
