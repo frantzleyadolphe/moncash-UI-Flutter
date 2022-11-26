@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:moncash/screens/ReceiveScreen.dart';
+import 'package:moncash/screens/SettingScreen.dart';
 import 'package:moncash/screens/transfertScreen.dart';
 import 'package:moncash/styles/colors.dart';
 import 'package:moncash/styles/fontStyles.dart';
@@ -13,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var selectedIndex = 0;
+
   final List transactionRecent = [
     {
       'senderProfil': 'images/my-profil.png',
@@ -40,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           //header app
           Container(
             margin: const EdgeInsets.only(right: 16, left: 16),
@@ -66,8 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {}),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  height: 70,
-                  width: 70,
+                  height: 60,
+                  width: 60,
                   decoration: const BoxDecoration(shape: BoxShape.circle),
                   child: const CircleAvatar(
                     radius: 25,
@@ -219,7 +223,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             children: [
                               ElevatedButton(
-                                onPressed: null,
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              const ReceiveScreen()));
+                                },
                                 style: ElevatedButton.styleFrom(
                                     shape: const CircleBorder()),
                                 child: Icon(Icons.receipt_outlined,
@@ -449,7 +459,10 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           Icon(Icons.home, size: 30, color: whiteColor),
           Icon(Icons.qr_code, size: 30, color: whiteColor),
-          Icon(Icons.settings, size: 30, color: whiteColor),
+          IconButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const SettingScreen())),
+              icon: Icon(Icons.settings, size: 30, color: whiteColor))
         ],
         onTap: (index) {},
       ),

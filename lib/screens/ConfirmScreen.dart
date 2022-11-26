@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:moncash/screens/HomeScreen.dart';
 import 'package:moncash/styles/colors.dart';
 import 'package:moncash/styles/fontStyles.dart';
 
@@ -41,11 +42,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                 ),
               ),
               onPressed: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ConfirmScreen()));
+                        builder: (context) => const HomeScreen()));
               },
               child: Text("Back to home", style: buttonText)),
         ],
